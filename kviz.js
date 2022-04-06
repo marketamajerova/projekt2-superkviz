@@ -1,7 +1,7 @@
 let otazka1 = {
     otazka: "Až o kolik centimetrů může 'vyrůst' Eiffelova věž v létě pod vlivem změny teplotních podmínek?",
     obrazek: 'obrazky/vez.png',
-    odpovedi: ['100m','10cm','15cm'],
+    odpovedi: ['100cm','10cm','15cm'],
     indexSpravneOdpovedi: 3
 }
 
@@ -22,8 +22,12 @@ let otazka3 = {
 let otazka = document.getElementById('otazka');
 let obrazek = document.getElementById('obrazek');
 let odpovedi = document.getElementById('odpovedi');
+let poradi = document.getElementById('poradi');
 
 zobrazitOtazku1();
+
+
+//dale jen funkce
 
 function zobrazitOtazku1(){ 
     otazka.innerText = otazka1.otazka;
@@ -33,10 +37,19 @@ function zobrazitOtazku1(){
         odpoved = document.createElement('li');
         odpoved.innerText = otazka1.odpovedi[indx];
         odpovedi.appendChild(odpoved);
+    })
 
     odpovedi.onclick = function(event){
-        zobrazitOtazku2();}
-    })}
+        
+        console.log(event);
+        
+        let zvolenaOdpoved = event.innerHTML;
+        console.log(zvolenaOdpoved);
+
+        zobrazitOtazku2();
+    }
+    
+}
 
 function zobrazitOtazku2(){ 
     odpovedi.innerText = '';
@@ -47,10 +60,12 @@ function zobrazitOtazku2(){
         odpoved = document.createElement('li');
         odpoved.innerText = otazka2.odpovedi[indx];
         odpovedi.appendChild(odpoved);
+    })
+    poradi.innerText = "Otázka 2/3"
     
-        odpovedi.onclick = function(event){
-            zobrazitOtazku3();}
-    })}
+    odpovedi.onclick = function(event){
+        zobrazitOtazku3();}
+}
 
 function zobrazitOtazku3(){ 
     odpovedi.innerText = '';
@@ -61,4 +76,6 @@ function zobrazitOtazku3(){
         odpoved = document.createElement('li');
         odpoved.innerText = otazka3.odpovedi[indx];
         odpovedi.appendChild(odpoved);
-    })}
+    })
+    poradi.innerText = "Otázka 3/3"
+}
